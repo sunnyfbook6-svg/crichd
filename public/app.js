@@ -3,6 +3,11 @@ let allChannels = [];
 let currentChannelIndex = -1;
 let player = null;
 
+// Get API base URL - works for both local and Cloudflare deployment
+const API_BASE = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000'
+  : '';  // Use relative URL for Cloudflare Pages
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initializePlayer();
@@ -78,7 +83,7 @@ function setupEventListeners() {
 async function loadChannels() {
     try {
         updateStatus('Loading...');
-        const response = await fetch('/api/channels');
+        const response = await fetch(`${API_BASE}/api/channels`);
         const data = await response.json();
         
         if (data.success) {
@@ -91,7 +96,7 @@ async function loadChannels() {
         }
     } catch (error) {
         console.error('Load error:', error);
-        showError('Failed to connect to server');
+        showError('Failed to connect to server: ' + error.message);
     }
 }
 
@@ -174,7 +179,7 @@ function selectChannel(index) {
         // Load stream using Plyr
         console.log(`Loading channel: ${selectedChannel.name}`);
         
-        const streamUrl = `/api/stream/${actualIndex}`;
+        const streamUrl = `${API_BASE}/api/stream/${actualIndex}`;
         console.log(`Stream URL: ${streamUrl}`);
         
         // Set the source for Plyr with retry configuration
@@ -248,7 +253,7 @@ async function refreshPlaylist() {
         btn.disabled = true;
         btn.textContent = '🔄 Refreshing...';
         
-        const response = await fetch('/api/refresh', { method: 'POST' });
+        const response = await fetch(`${API_BASE}/api/refresh`, { method: 'POST' });
         const data = await response.json();
         
         if (data.success) {
@@ -272,7 +277,7 @@ async function refreshPlaylist() {
  */
 async function updateCacheStatus() {
     try {
-        const response = await fetch('/api/status');
+        const response = await fetch(`${API_BASE}/api/status`);
         const data = await response.json();
         
         if (data.success) {
