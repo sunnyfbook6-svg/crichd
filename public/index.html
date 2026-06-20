@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Streaming App</title>
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🎬 Live Channel Streamer</h1>
+                <p>Real-time m3u8 Playlist Streaming</p>
+            </div>
+            <div class="header-actions">
+                <button id="refreshBtn" class="btn btn-refresh">🔄 Refresh</button>
+                <span id="statusBadge" class="status-badge">Offline</span>
+            </div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Search channels... (e.g., Star Sports, Cricket)"
+                autocomplete="off"
+            >
+            <span id="channelCount" class="channel-count">Loading...</span>
+        </div>
+
+        <div class="main-content">
+            <!-- Player Section -->
+            <div class="player-section">
+                <div class="video-player" id="playerContainer">
+                    <video id="livePlayer" controls playsinline></video>
+                </div>
+                <div class="player-info">
+                    <h2 id="currentChannelName">No Channel Selected</h2>
+                    <div class="player-controls">
+                        <button id="stopBtn" class="btn btn-stop" disabled>⏹ Stop</button>
+                        <button id="fullscreenBtn" class="btn btn-fullscreen" disabled>🖥 Fullscreen</button>
+                    </div>
+                    <div class="stream-details">
+                        <p><strong>Stream:</strong> <span id="streamUrl">N/A</span></p>
+                        <p><strong>Status:</strong> <span id="statusText">Ready</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Channels List -->
+            <div class="channels-section">
+                <h3>📻 Available Channels</h3>
+                <div id="channelsList" class="channels-list">
+                    <div class="loading">Loading channels...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cache Status -->
+        <div class="cache-status" id="cacheStatus">
+            <p>Cache Status: <span id="cacheInfo">Loading...</span></p>
+        </div>
+    </div>
+
+    <!-- Plyr Player -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <!-- HLS.js for HLS support -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="app.js"></script>
+</body>
+</html>
