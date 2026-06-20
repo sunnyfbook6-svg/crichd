@@ -12,6 +12,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
+// Root route - serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 // Store fetched channels in memory with refresh interval
 let cachedChannels = [];
 let lastFetchTime = 0;
@@ -348,6 +353,12 @@ app.get('/api/status', (req, res) => {
     cache_expires_in_ms: timeUntilRefresh,
     cache_duration_ms: CACHE_DURATION
   });
+});
+
+// 404 handler - catch all unmatched routes
+app.use((req, res) => {
+  console.log(`404 - Requested: ${req.path}`);
+  res.status(404).sendFile(__dirname + '/public/index.html');
 });
 
 // Start server

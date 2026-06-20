@@ -1,0 +1,52 @@
+═══════════════════════════════════════════════════════════════
+  PUSH THIS COMMAND TO FIX YOUR RAILWAY DEPLOYMENT
+═══════════════════════════════════════════════════════════════
+
+Copy and paste this command into your terminal/Git Bash:
+
+───────────────────────────────────────────────────────────────
+git add server.js && git commit -m "Fix Railway deployment" && git push
+───────────────────────────────────────────────────────────────
+
+What it does:
+✓ Stages the updated server.js file
+✓ Creates a commit with the fix
+✓ Pushes to GitHub
+✓ Triggers Railway to auto-rebuild and redeploy
+
+After this:
+1. Wait 2-3 minutes for Railway to rebuild
+2. Visit your Railway app URL
+3. Hard refresh (Ctrl+Shift+R)
+4. Your app should load! 🎉
+
+═══════════════════════════════════════════════════════════════
+
+If you prefer individual commands:
+
+Step 1:
+git add server.js
+
+Step 2:
+git commit -m "Fix Railway deployment - add root route handler"
+
+Step 3:
+git push origin main
+
+═══════════════════════════════════════════════════════════════
+
+Using GitHub Desktop instead?
+1. Open GitHub Desktop
+2. Select your repository
+3. You'll see server.js as modified
+4. Check the checkbox to stage it
+5. Enter commit message
+6. Click "Commit to main"
+7. Click "Push origin"
+
+═══════════════════════════════════════════════════════════════
+
+That's all you need to do!
+Railway handles the rest automatically.
+
+Your app will be live in ~4 minutes! 🚀
