@@ -6,3 +6,9 @@ compatibility_date = "2024-01-01"
 [env.production]
 route = "*example.com/api/*"
 zone_id = "YOUR_ZONE_ID"
+
+[[kv_namespaces]]
+binding = "STREAMING_KV"
+id = "YOUR_KV_NAMESPACE_ID"
+preview_id = "YOUR_PREVIEW_ID"
+

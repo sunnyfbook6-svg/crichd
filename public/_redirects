@@ -1,0 +1,5 @@
+# Redirect API calls to Cloudflare Worker
+/api/* https://live-streaming-app.YOUR_ACCOUNT.workers.dev/api/:splat 200!
+
+# SPA fallback
+/* /index.html 200
