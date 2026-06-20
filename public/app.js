@@ -3,10 +3,10 @@ let allChannels = [];
 let currentChannelIndex = -1;
 let player = null;
 
-// Get API base URL - works for both local and Cloudflare deployment
+// Use local server for development, same domain for production
 const API_BASE = window.location.hostname === 'localhost' 
   ? 'http://localhost:3000'
-  : '';  // Use relative URL for Cloudflare Pages
+  : '';  // Same domain as Pages in production
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
